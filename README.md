@@ -1,24 +1,11 @@
 # time in zone
 
-[![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://www.youtube.com/watch?v=hAWpsIuem10)
-
-## 👋 hello
-
-Practical demonstration on leveraging computer vision for analyzing wait times and
-monitoring the duration that objects or individuals spend in predefined areas of video
-frames. This example project, perfect for retail analytics or traffic management
-applications.
-
-https://github.com/roboflow/supervision/assets/26109316/d051cc8a-dd15-41d4-aa36-d38b86334c39
+Using Computer vision and techniques from Supervision librairy, I developed a solution  to track customer movements in supermarkets to generate 2D heatmaps
+for behavior analysis.
 
 ## 💻 install
 
-- clone repository and navigate to example directory
-
-  ```bash
-  git clone https://github.com/roboflow/supervision.git
-  cd supervision/examples/time_in_zone
-  ```
+- clone repository
 
 - setup python environment and activate it [optional]
 
@@ -106,152 +93,31 @@ python scripts/draw_zones.py \
 --zone_configuration_path "data/traffic/config.json"
 ```
 
-https://github.com/roboflow/supervision/assets/26109316/9d514c9e-2a61-418b-ae49-6ac1ad6ae5ac
 
 ## 🎬 video & stream processing
 
-### `inference_file_example`
 
-Script to run object detection on a video file using the Roboflow Inference model.
 
-  - `--zone_configuration_path`: Path to the zone configuration JSON file.
-  - `--source_video_path`: Path to the source video file.
-  - `--model_id`: Roboflow model ID.
-  - `--classes`: List of class IDs to track. If empty, all classes are tracked.
-  - `--confidence_threshold`: Confidence level for detections (`0` to `1`). Default is `0.3`.
-  - `--iou_threshold`: IOU threshold for non-max suppression. Default is `0.7`.
-
-```bash
-python inference_file_example.py \
---zone_configuration_path "data/checkout/config.json" \
---source_video_path "data/checkout/video.mp4" \
---model_id "yolov8x-640" \
---classes 0 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
-
-https://github.com/roboflow/supervision/assets/26109316/d051cc8a-dd15-41d4-aa36-d38b86334c39
-
-```bash
-python inference_file_example.py \
---zone_configuration_path "data/traffic/config.json" \
---source_video_path "data/traffic/video.mp4" \
---model_id "yolov8x-640" \
---classes 2 5 6 7 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
-
-https://github.com/roboflow/supervision/assets/26109316/5ec896d7-4b39-4426-8979-11e71666878b
-
-### `inference_stream_example`
-
-Script to run object detection on a video stream using the Roboflow Inference model.
-
-  - `--zone_configuration_path`: Path to the zone configuration JSON file.
-  - `--rtsp_url`: Complete RTSP URL for the video stream.
-  - `--model_id`: Roboflow model ID.
-  - `--classes`: List of class IDs to track. If empty, all classes are tracked.
-  - `--confidence_threshold`: Confidence level for detections (`0` to `1`). Default is `0.3`.
-  - `--iou_threshold`: IOU threshold for non-max suppression. Default is `0.7`.
-
-```bash
-python inference_stream_example.py \
---zone_configuration_path "data/checkout/config.json" \
---rtsp_url "rtsp://localhost:8554/live0.stream" \
---model_id "yolov8x-640" \
---classes 0 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
-
-```bash
-python inference_stream_example.py \
---zone_configuration_path "data/traffic/config.json" \
---rtsp_url "rtsp://localhost:8554/live0.stream" \
---model_id "yolov8x-640" \
---classes 2 5 6 7 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
-
-<details>
-<summary>👉 show ultralytics examples</summary>
-
-### `ultralytics_file_example`
+### `main`
 
 Script to run object detection on a video file using the Ultralytics YOLOv8 model.
 
   - `--zone_configuration_path`: Path to the zone configuration JSON file.
   - `--source_video_path`: Path to the source video file.
+  - `--target_video_path` : Path to the target video file (output)
+  - `--target_heatmap_video_path` : Path to the target heatmap video file (output)
+  - `--dataheatmap_background` : Path to the background image for the heatmap
   - `--weights`: Path to the model weights file. Default is `'yolov8s.pt'`.
   - `--device`: Computation device (`'cpu'`, `'mps'` or `'cuda'`). Default is `'cpu'`.
   - `--classes`: List of class IDs to track. If empty, all classes are tracked.
   - `--confidence_threshold`: Confidence level for detections (`0` to `1`). Default is `0.3`.
   - `--iou_threshold`: IOU threshold for non-max suppression. Default is `0.7`.
 
-```bash
-python ultralytics_file_example.py \
---zone_configuration_path "data/checkout/config.json" \
---source_video_path "data/checkout/video.mp4" \
---weights "yolov8x.pt" \
---device "cpu" \
---classes 0 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
 
-```bash
-python ultralytics_file_example.py \
---zone_configuration_path "data/traffic/config.json" \
---source_video_path "data/traffic/video.mp4" \
---weights "yolov8x.pt" \
---device "cpu" \
---classes 2 5 6 7 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
-
-### `ultralytics_stream_example`
-
-Script to run object detection on a video stream using the Ultralytics YOLOv8 model.
-
-  - `--zone_configuration_path`: Path to the zone configuration JSON file.
-  - `--rtsp_url`: Complete RTSP URL for the video stream.
-  - `--weights`: Path to the model weights file. Default is `'yolov8s.pt'`.
-  - `--device`: Computation device (`'cpu'`, `'mps'` or `'cuda'`). Default is `'cpu'`.
-  - `--classes`: List of class IDs to track. If empty, all classes are tracked.
-  - `--confidence_threshold`: Confidence level for detections (`0` to `1`). Default is `0.3`.
-  - `--iou_threshold`: IOU threshold for non-max suppression. Default is `0.7`.
-
-```bash
-python ultralytics_stream_example.py \
---zone_configuration_path "data/checkout/config.json" \
---rtsp_url "rtsp://localhost:8554/live0.stream" \
---weights "yolov8x.pt" \
---device "cpu" \
---classes 0 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
-
-```bash
-python ultralytics_stream_example.py \
---zone_configuration_path "data/traffic/config.json" \
---rtsp_url "rtsp://localhost:8554/live0.stream" \
---weights "yolov8x.pt" \
---device "cpu" \
---classes 2 5 6 7 \
---confidence_threshold 0.3 \
---iou_threshold 0.7
-```
-
-</details>
 
 ## © license
 
-This demo integrates two main components, each with its own licensing:
+This is a an extension to an existing code from Roboflow Supervision Tutorial. This demo integrates two main components, each with its own licensing:
 
 - ultralytics: The object detection model used in this demo, YOLOv8, is distributed
   under the [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
