@@ -1,4 +1,4 @@
-# time in zone
+# Behaviour Analysis  - time in zone
 
 Using Computer vision and techniques from Supervision librairy, I developed a solution  to track customer movements in supermarkets to generate 2D heatmaps
 for behavior analysis.
