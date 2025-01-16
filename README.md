@@ -2,7 +2,11 @@
 
 Using Computer vision and techniques from Supervision librairy, I developed a solution  to track customer movements in supermarkets to generate 2D heatmaps
 for behavior analysis.
-https://github.com/Abdelmouhaimen/Behavior_Analysis_YOLO/blob/main/data/output.mp4
+
+
+https://github.com/user-attachments/assets/13f03d79-ec03-4476-a72f-8ab5bf08878f
+
+
 
 ## 💻 install
 
