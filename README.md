@@ -4,7 +4,11 @@ Using Computer vision and techniques from Supervision librairy, I developed a so
 for behavior analysis.
 
 
-https://github.com/user-attachments/assets/13f03d79-ec03-4476-a72f-8ab5bf08878f
+
+
+
+
+https://github.com/user-attachments/assets/2bdb3f02-bdd1-4a9c-8f5d-81d54f2df80a
 
 
 
